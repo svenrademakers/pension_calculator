@@ -1,0 +1,22 @@
+{
+    "name": "pension_calculator",
+    "version": "1.0.0",
+    "description": "",
+    "main": "pension.js",
+    "scripts": {
+        "build": "webpack"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "commonjs",
+    "devDependencies": {
+        "bootstrap": "^5.3.8",
+        "chartjs": "^0.3.24",
+        "css-loader": "^7.1.2",
+        "html-webpack-plugin": "^5.6.4",
+        "style-loader": "^4.0.0",
+        "webpack": "^5.101.3",
+        "webpack-cli": "^6.0.1"
+    }
+}

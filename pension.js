@@ -1,3 +1,6 @@
+require('./css.css');
+//require('bootstrap/dist/css/bootstrap.min.css');
+
 // ---- Formatting helpers ----
 const euroFmt = new Intl.NumberFormat('en-GB', {style: 'currency', currency: 'EUR', maximumFractionDigits: 0});
 const pctFmt = (x) => `${x.toFixed(1)}%`;
