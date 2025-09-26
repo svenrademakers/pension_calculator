@@ -341,6 +341,19 @@ document.addEventListener('DOMContentLoaded', () => {
         els.inflationAdjustedSpending.textContent = euroFmt.format(spendAtRetirement);
     }
 
+    function updateRequiredSavingsSecondaryBanner() {
+        const {age, pensionAge, withdrawalYearly, pensionYearly, inflation} = getInputs();
+        const yearsToRetirement = pensionAge - age;
+        const spendAtRetirement = adjustForInflation(withdrawalYearly, yearsToRetirement, inflation);
+        const aowAtRetirement = adjustForInflation(pensionYearly, yearsToRetirement, inflation);
+        const gapAtRetirement = Math.max(0, spendAtRetirement - aowAtRetirement);
+        const targetAtRetirement = gapAtRetirement * 25; // 4% rule target
+
+        // Find the secondary banner for the required savings chart and update it
+        const secondaryBanner = document.getElementById('chart-banner');
+        secondaryBanner.textContent = `Total required at retirement: ${euroFmt.format(targetAtRetirement)}`;
+    }
+
     /**
      * Start value with growth r, inflation i, and inflation-adjusted withdrawal each step.
      * The `withdrawalToday` is the amount in today's money (real terms).
@@ -421,6 +434,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Update summary banner
         updateSummaryBanner();
+
+        // Update required savings secondary banner
+        updateRequiredSavingsSecondaryBanner();
     }
 
     // First render
